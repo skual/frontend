@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Skual - The database manager</title>
+        <meta charset="utf-8">
+
+        <link rel="Shortcut Icon" type="image/ico" href="images/favicon.png">
+        <link rel="stylesheet" href="assets/bootstrap-2.1.1/css/bootstrap.min.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
+        <script data-main="js/app.js" src="assets/requirejs-2.0.4/require-jquery.js"></script>
+    </head>
+    <body>
+        <div id="modal-login" class="modal fade hide">
+            <form method="post" action="" class="form-horizontal">
+                <div class="modal-header">
+                    <h3>Log in to your database</h3>
+                </div>
+                <div class="modal-body">
+                	<div class="alert">&nbsp;</div>
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="login-username">Username:</label>
+                            <div class="controls">
+                                <input type="text" name="username" id="login-username"  class="span3" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="login-password">Password:</label>
+                            <div class="controls">
+                                <input type="password" name="password" id="login-password"  class="span3" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="control-group">
+                        <a href="javascript:void(0);" title="Click here to show advanced options" class="control-label">Advanced <i class="icon-chevron-up"></i></a>
+                    </div>
+                    <fieldset class="advanced">
+                    	<div class="control-group">
+                            <label class="control-label" for="login-server-engine">Server engine:</label>
+                            <div class="controls">
+                            	<select name="server-engine" id="login-server-engine" class="span3">
+                            		<option value="mysql">MySQL</option>
+                            		<option value="postgresql">PostgreSQL</option>
+                            		<option value="sqlite">SQLite</option>
+                            	</select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="login-server-hostname">Server host:</label>
+                            <div class="controls">
+                                <input type="text" name="server-hostname" id="login-server-hostname"  class="span3" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="login-server-port">Server port:</label>
+                            <div class="controls">
+                                <input type="text" name="server-port" id="login-server-port"  class="span3" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" name="proceed" value="Log in" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
