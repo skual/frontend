@@ -31,6 +31,10 @@ define(['Skual', 'events'], function () {
 				'type': 'POST',
 				'data': jQuery.param(session),
 				'success': function (oData) {
+					// Set variables
+					token = oData.token;
+					connected = true;
+					
 					// clear fields
 					login.find ('form').clearForm();
 					
@@ -46,7 +50,6 @@ define(['Skual', 'events'], function () {
 				},
 				'error': function (request, status, error) {
 					var oData = jQuery.parseJSON(request.responseText);
-					
 					if ('errors' in oData) {
 						form.clearErrors(true).setErrors(oData.errors);
 					}
@@ -58,7 +61,7 @@ define(['Skual', 'events'], function () {
 				}
 			});
 			return false;
-		}
+		};
 		
 		function autoConnect() {
 			if (typeof(session) !== 'object')
@@ -90,7 +93,7 @@ define(['Skual', 'events'], function () {
 					return false;
 				}
 			});
-		}
+		};
 		
 		/**
 		 * Toggle the state of the "Advanced" fieldset
@@ -120,7 +123,7 @@ define(['Skual', 'events'], function () {
 				else fieldset.slideDown(speed);
 				jQuery(this).find ('i').removeClass('icon-chevron-up').addClass('icon-chevron-down');
 			}
-		}
+		};
 		
 		function showMessage(message, type) {
 			if (type === undefined)
@@ -132,7 +135,7 @@ define(['Skual', 'events'], function () {
 					.addClass('alert-' + type)
 					.text(message)
 					.slideDown(500);
-		}
+		};
 		
 		/**
 		 * Show the modal to connect to a database
@@ -144,23 +147,28 @@ define(['Skual', 'events'], function () {
 				login.find ('#login-server-' + key).val(Skual.config.database[key]);
 			}
 			
-			login.modal('show');
-		}
+			login.modal({'keyboard': false, 'backdrop': 'static', 'show': true});
+		};
 		
 		this.disconnect = function () {
-			// set token & session to null
-			// set connected to false
-			
-			Skual.Events.trigger('disconnected');
-		}
+			jQuery.confirm.call(this, 'Are you sure you want to close the session?', 'Disconnect', function (state) {
+				if (!state) return false;
+				token = null;
+				session = null;
+				connected = false;
+				
+				Skual.Events.trigger('disconnected');
+				this.connect();
+			});
+		};
 		
 		this.isConnected = function () {
 			return connected;
-		}
+		};
 		
 		this.getToken = function () {
 			return token;
-		}
+		};
 		
 		/** INIT **/
 		login.find ('.modal-body>.alert').hide();
