@@ -15,7 +15,8 @@ define(['Skual', 'events'], function () {
 		var connected = false,
 			session = null,
 			token = null,
-			login = jQuery('#modal-login');
+			login = jQuery('#modal-login'),
+			timeout = null;
 		
 		/**
 		 * @name submit
@@ -46,7 +47,7 @@ define(['Skual', 'events'], function () {
 					
 					// Will try to automatically reconnect 10 seconds before the session expires
 					var interval = (oData.expire * 1000) - Math.round(new Date().getTime()) - 10000;
-					setTimeout(autoConnect, interval);
+					timeout = setTimeout(autoConnect, interval);
 				},
 				'error': function (request, status, error) {
 					var oData = jQuery.parseJSON(request.responseText);
@@ -77,7 +78,7 @@ define(['Skual', 'events'], function () {
 					
 					// Will try to automatically reconnect 10 seconds before the session expires
 					var interval = (oData.expire * 1000) - Math.round(new Date().getTime()) - 10000;
-					setTimeout(autoConnect, interval);
+					timeout = setTimeout(autoConnect, interval);
 				},
 				'error': function (request, status, error) {
 					var oData = jQuery.parseJSON(request.responseText);
@@ -156,6 +157,9 @@ define(['Skual', 'events'], function () {
 				token = null;
 				session = null;
 				connected = false;
+				
+				clearTimeout(timeout);
+				timeout = null;
 				
 				Skual.Events.trigger('disconnected');
 				this.connect();
