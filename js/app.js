@@ -7,9 +7,10 @@ requirejs.config({
     //never includes a ".js" extension since
     //the paths config could be for a directory.
     'paths': {
-        'bootstrap': '../../assets/bootstrap-2.1.1/js/bootstrap.min',
-        'Skual':     '../../config',
-        'plugins':   '../lib/plugins'
+        'bootstrap':  '../../assets/bootstrap-2.1.1/js/bootstrap.min',
+        'codemirror': '../../assets/codemirror-2.3.4/js/',
+        'Skual':      '../../config',
+        'plugins':    '../lib/plugins'
     }
 });
 
@@ -17,9 +18,11 @@ var modules = [];
 modules.push('jquery');
 modules.push('Skual');
 modules.push('bootstrap');
+modules.push('bootstrap');
 modules.push('plugins');
 
 modules.push('session');
+modules.push('query');
 modules.push('databases');
 
 

@@ -1,5 +1,10 @@
 define(['Skual', 'session'], function () {
-	Skual.Databases = function () {
+	/**
+	 * @name Databases
+	 * @package Skual
+	 */
+	Skual.Databases = {};
+	(function () {
 		
-	}
+	}).apply(Skual.Databases);
 });

@@ -181,7 +181,7 @@ define(['Skual', 'events'], function () {
 		
 		// Show the connect page
 		toggleAdvanced.apply(login.find ('.modal-body>.control-group>a'), [null, 'hide', 0]);
-		if (!connected) this.connect();
+		//if (!connected) this.connect();
 
 	}).apply(Skual.Session);
 });

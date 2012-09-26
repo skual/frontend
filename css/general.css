@@ -1,0 +1,61 @@
+/*
+ * Bootstrap Fixins
+ */
+.modal>form {
+	margin-bottom: 0;
+}
+
+/*
+ * Theme
+ */
+body,body>header.navbar {
+	min-width: 700px
+}
+
+body>header.navbar .brand {
+	background: transparent url('../images/logo_small.png') no-repeat 30px center;
+	padding-left: 65px;
+}
+
+body>.container-fluid {
+	margin-top: 65px;
+}
+
+body>.container-fluid>.row-fluid>.sidebar-nav {
+    position: relative;
+    top: 0;
+    left:auto;
+    width: 220px;
+    float: left;
+}
+
+body>.container-fluid>.row-fluid>.content {
+    margin-left: 285px;
+}
+
+#querybox {
+	margin-bottom: 20px;
+	height: 188px;
+}
+
+#querybox>textarea {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 50px;
+	width: auto;
+}
+
+#querybox .CodeMirror-scroll {background-color: #fff}
+#querybox .CodeMirror-gutter {background-color: #eee}
+#querybox .CodeMirror-gutter .CodeMirror-gutter-text {color: #777}
+
+#querybox>.actions {
+	margin-top: 10px;
+}
+
+#querybox>.actions>.external {
+	margin-top: 5px;
+	display: inline-block;
+}
